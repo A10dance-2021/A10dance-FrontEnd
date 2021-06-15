@@ -5,12 +5,12 @@ import "firebase/storage";
 
 const firebaseConfig = firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: "a10dance-cfcfa.firebaseapp.com",
-  projectId: "a10dance-cfcfa",
-  storageBucket: "a10dance-cfcfa.appspot.com",
-  messagingSenderId: "914700030477",
-  appId: "1:914700030477:web:2dc23927524df8cb55fb44",
-  measurementId: "G-15RCWXCJZB"
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
 })
 
   export const auth = firebaseConfig.auth();
