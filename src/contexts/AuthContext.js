@@ -28,7 +28,14 @@ export function AuthProvider({ children }) {
   }
 
   function updateName(name) {
-    return auth.currentUser.updateProfile({ displayName: name, photoURL: null });
+    return auth.currentUser.updateProfile({
+      displayName: name,
+      photoURL: null,
+    });
+  }
+
+  function updatePassword(password) {
+    return auth.currentUser.updatePassword(password);
   }
 
   useEffect(() => {
@@ -46,7 +53,8 @@ export function AuthProvider({ children }) {
     logout,
     signup,
     updateName,
-    resetPassword
+    resetPassword,
+    updatePassword
   };
   return (
     <AuthContext.Provider value={value}>
