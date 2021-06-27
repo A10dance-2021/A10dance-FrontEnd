@@ -27,3 +27,6 @@ then run the react app:
 
 -Check the attendance of students in the classes page, dropdown menu to facilitate
  selecting which class to check
+ 
+ ### Software Architecture
+ ![Orbital Architecture](https://user-images.githubusercontent.com/35002411/123557221-45d2c400-d7c2-11eb-854a-68f6e91d9ee1.png)
