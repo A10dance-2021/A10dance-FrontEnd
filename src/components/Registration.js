@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Alert, Button, Form, Container, Row } from "react-bootstrap";
 import Sidebar from "./Sidebar";
 import { db } from "../config/firebase";
@@ -9,10 +9,30 @@ export default function Registration() {
   const nameRef = useRef();
   const studentClassRef = useRef();
   const studentIdRef = useRef();
+  const [classes, setClasses] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
+  useEffect(() => {
+    async function fetchClasses(e) {
+      setLoading(true);
+      let list = [];
+      await db
+        .collection("classes")
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            list.push(doc.data().class_name);
+          });
+        })
+        .then(() => {
+          setClasses(list);
+          setLoading(false);
+        });
+    }
+    fetchClasses();
+  }, []);
   async function handleStudentReg(e) {
     e.preventDefault();
     setMessage("");
@@ -94,7 +114,9 @@ export default function Registration() {
             </Form.Group>
             <Form.Group id="student-class">
               <Form.Label>Student Class</Form.Label>
-              <Form.Control type="text" ref={studentClassRef} required />
+              <Form.Control as="select" multiple ref={studentClassRef} required>
+                {classes.map(val => <option value={val}>{val}</option>)}
+              </Form.Control>
             </Form.Group>
             <Form.Group id="student-id">
               <Form.Label>Student ID</Form.Label>

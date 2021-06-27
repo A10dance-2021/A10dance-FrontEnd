@@ -36,7 +36,7 @@ export default function Students({ currClass, students, loading }) {
     <Container>
       <h3 className="my-5">{currClass}</h3>
       {currClass !== "No Class Selected" && (
-        <Table style={{ backgroundColor: "#c4e8b7" }}>
+        <Table style={{ backgroundColor: "#b1aeae" }}>
           <thead>
             <tr>
               <th>#</th>
@@ -51,7 +51,7 @@ export default function Students({ currClass, students, loading }) {
                 style={
                   time[index] === "NOT PRESENT"
                     ? { backgroundColor: "pink" }
-                    : { backgroundColor: "green" }
+                    : { backgroundColor: "#c4e8b7" }
                 }
               >
                 <td>{index + 1}</td>
