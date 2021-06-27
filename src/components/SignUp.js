@@ -2,8 +2,6 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import firebaseConfig from "../config/firebase";
-import { storage } from "../config/firebase";
 
 export default function SignUp() {
   const nameRef = useRef();

@@ -18,6 +18,7 @@ import { FiHome, FiLogOut, FiArrowLeftCircle } from "react-icons/fi";
 import { BsFillPersonFill } from "react-icons/bs";
 import { FaSchool } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
 
 //import sidebar css from react-pro-sidebar module and our custom css
 import "react-pro-sidebar/dist/css/styles.css";
@@ -92,6 +93,10 @@ const Sidebar = () => {
               <MenuItem icon={<FaSchool size={42} />}>
                 Classes
                 <Link to="/classes" />
+              </MenuItem>
+              <MenuItem icon={<AiOutlineUsergroupAdd size={42} />}>
+                Registration
+                <Link to="/registration" />
               </MenuItem>
             </Menu>
           </SidebarContent>

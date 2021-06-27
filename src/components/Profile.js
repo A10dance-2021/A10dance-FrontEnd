@@ -33,7 +33,7 @@ export default function Profile() {
     e.preventDefault();
     if (
       newPasswordRef.current.value !== confirmNewPasswordRef.current.value &&
-      currentPasswordRef.current.value == currentUser.password
+      currentPasswordRef.current.value === currentUser.password
     ) {
       return setError("Passwords do not match");
     }
@@ -73,7 +73,7 @@ export default function Profile() {
         </Row>
         <h5 className="mt-5 mb-3">Change Name</h5>
         <Paper
-          className="col-8 px-2 m-2"
+          className="col-8 px-3 py-3 m-2"
           elevation={3}
           style={{ backgroundColor: "#c4e8b7" }}
         >
@@ -89,7 +89,7 @@ export default function Profile() {
         </Paper>
         <h5 className="mt-5 mb-3">Change Password</h5>
         <Paper
-          className="col-8 px-2 m-2"
+          className="col-8 px-3 py-3 m-2"
           elevation={3}
           style={{ backgroundColor: "#c4e8b7" }}
         >
