@@ -14,12 +14,6 @@ export default function Classes() {
     fetchClasses();
   }, []);
 
-  async function changeClass(val) {
-    setLoading(true);
-    setCurrClass(val);
-    console.log(currClass);
-  }
-
   async function fetchClasses(e) {
     setLoading(true);
     list = [];
@@ -30,23 +24,26 @@ export default function Classes() {
         snapshot.forEach((doc) => {
           list.push(doc.data().class_name);
         });
+      })
+      .then(() => {
+        setClasses(list);
+        setLoading(false);
       });
-    setClasses(list);
-    setLoading(false);
   }
 
-  async function fetchStudents(e) {
-    e.preventDefault();
+  async function fetchStudents(val) {
     setLoading(true);
     list = [];
+    setCurrClass(val);
     await db
       .collection("students")
-      .where("student_class", "==", currClass)
+      .where("student_class", "==", val)
       .get()
       .then((snapshot) => {
         snapshot.forEach((doc) => list.push(doc.data()));
-      });
-    setStudents(list);
+      })
+      .then(() => setStudents(list));
+    console.log(students);
     setLoading(false);
   }
 
@@ -64,23 +61,14 @@ export default function Classes() {
                 value={val}
                 as="button"
                 onClick={(e) => {
-                  changeClass(e.target.value).then(() => fetchStudents(e));
+                  fetchStudents(e.target.value);
                 }}
               >
                 {val}
               </Dropdown.Item>
             ))}
         </DropdownButton>
-        {!loading && (
-          <Container>
-            <h5>{currClass}</h5>
-            <ul>
-              {students.map((val) => (
-                <li>{val.student_name}</li>
-              ))}
-            </ul>
-          </Container>
-        )}
+        <Students currClass={currClass} loading={loading} students={students} />
       </Container>
     </Row>
   );
