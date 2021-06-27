@@ -1,8 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Alert, Button, Form, Container, Row } from "react-bootstrap";
 import Sidebar from "./Sidebar";
-import { useAuth } from "../contexts/AuthContext";
-import { db, storage } from "../config/firebase";
+import { db } from "../config/firebase";
 import Paper from "@material-ui/core/Paper";
 
 export default function Registration() {

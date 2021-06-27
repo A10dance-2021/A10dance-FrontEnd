@@ -35,7 +35,7 @@ export default function Students({ currClass, students, loading }) {
   return (
     <Container>
       <h3 className="my-5">{currClass}</h3>
-      {currClass != "No Class Selected" && (
+      {currClass !== "No Class Selected" && (
         <Table style={{ backgroundColor: "#c4e8b7" }}>
           <thead>
             <tr>
@@ -47,8 +47,9 @@ export default function Students({ currClass, students, loading }) {
           <tbody>
             {students.map((val, index) => (
               <tr
+                key={index}
                 style={
-                  time[index] == "NOT PRESENT"
+                  time[index] === "NOT PRESENT"
                     ? { backgroundColor: "pink" }
                     : { backgroundColor: "white" }
                 }

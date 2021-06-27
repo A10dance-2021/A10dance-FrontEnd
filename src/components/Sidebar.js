@@ -34,7 +34,6 @@ const Sidebar = () => {
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
   };
 
-  const [error, setError] = useState("");
   const { logout } = useAuth();
   const history = useHistory();
 
@@ -50,13 +49,12 @@ const Sidebar = () => {
   }, []);
 
   async function handleLogout() {
-    setError("");
 
     try {
       await logout();
       history.push("/login");
     } catch {
-      setError("Failed to log out");
+      console.log("error")
     }
   }
 

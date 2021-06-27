@@ -55,8 +55,9 @@ export default function Classes() {
         <h2 className="my-5">Classes</h2>
         <DropdownButton id="dropdown-basic-button" title="Class List">
           {!loading &&
-            classes.map((val) => (
+            classes.map((val, key) => (
               <Dropdown.Item
+                key={key}
                 value={val}
                 as="button"
                 onClick={(e) => {

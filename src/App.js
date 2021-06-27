@@ -1,9 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-import firebaseConfig from "./config/firebase";
 import SignUp from "./components/SignUp";
 import { AuthProvider } from "./contexts/AuthContext";
 import Dashboard from "./components/Dashboard";
