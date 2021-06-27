@@ -7,7 +7,7 @@ import { db } from "../config/firebase";
 export default function Classes() {
   const [classes, setClasses] = useState([]);
   const [students, setStudents] = useState([]);
-  const [currClass, setCurrClass] = useState("none");
+  const [currClass, setCurrClass] = useState("No Class Selected");
   let list = [];
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -43,7 +43,6 @@ export default function Classes() {
         snapshot.forEach((doc) => list.push(doc.data()));
       })
       .then(() => setStudents(list));
-    console.log(students);
     setLoading(false);
   }
 
