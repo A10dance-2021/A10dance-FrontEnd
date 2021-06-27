@@ -51,7 +51,7 @@ export default function Students({ currClass, students, loading }) {
                 style={
                   time[index] === "NOT PRESENT"
                     ? { backgroundColor: "pink" }
-                    : { backgroundColor: "white" }
+                    : { backgroundColor: "green" }
                 }
               >
                 <td>{index + 1}</td>
