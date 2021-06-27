@@ -8,41 +8,40 @@ export default function Classes() {
   const [classes, setClasses] = useState([]);
   const [students, setStudents] = useState([]);
   const [currClass, setCurrClass] = useState("No Class Selected");
-  let list = [];
   const [loading, setLoading] = useState(false);
+  let classList = [];
   useEffect(() => {
+    async function fetchClasses(e) {
+      setLoading(true);
+      let list = [];
+      await db
+        .collection("classes")
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            list.push(doc.data().class_name);
+          });
+        })
+        .then(() => {
+          setClasses(list);
+          setLoading(false);
+        });
+    }
     fetchClasses();
   }, []);
 
-  async function fetchClasses(e) {
-    setLoading(true);
-    list = [];
-    await db
-      .collection("classes")
-      .get()
-      .then((snapshot) => {
-        snapshot.forEach((doc) => {
-          list.push(doc.data().class_name);
-        });
-      })
-      .then(() => {
-        setClasses(list);
-        setLoading(false);
-      });
-  }
-
   async function fetchStudents(val) {
     setLoading(true);
-    list = [];
+    classList = [];
     setCurrClass(val);
     await db
       .collection("students")
       .where("student_class", "==", val)
       .get()
       .then((snapshot) => {
-        snapshot.forEach((doc) => list.push(doc.data()));
+        snapshot.forEach((doc) => classList.push(doc.data()));
       })
-      .then(() => setStudents(list));
+      .then(() => setStudents(classList));
     setLoading(false);
   }
 
