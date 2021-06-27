@@ -4,6 +4,8 @@ A10dance is an attendance taking software for schools that uses facial recogniti
 attendance taking process. This is the User Interface intended for school staff to keep track
 of attendance of students, built using ReactJS and Firebase.
 
+Live site deployed at https://relaxed-nightingale-61649a.netlify.app/
+
 ## Installation
 
 first clone the repository to a working local directory:
