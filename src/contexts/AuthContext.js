@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../config/firebase";
+import { db } from "../config/firebase";
 
 const AuthContext = React.createContext();
 
@@ -38,6 +39,11 @@ export function AuthProvider({ children }) {
     return auth.currentUser.updatePassword(password);
   }
 
+  function updateFormClass(formclass) {
+    const uid = auth.currentUser?.uid;
+    db.collection("formclass").doc(uid).set({ form_class: formclass });
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -54,7 +60,8 @@ export function AuthProvider({ children }) {
     signup,
     updateName,
     resetPassword,
-    updatePassword
+    updatePassword,
+    updateFormClass
   };
   return (
     <AuthContext.Provider value={value}>

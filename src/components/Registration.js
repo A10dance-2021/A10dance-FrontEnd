@@ -75,8 +75,6 @@ export default function Registration() {
 
   return (
     <Row className="d-flex">
-      {error && <Alert variant="danger">{error}</Alert>}
-      {message && <Alert variant="success">{message}</Alert>}
       <Container className="col-3">
         <Sidebar />
       </Container>
@@ -84,8 +82,12 @@ export default function Registration() {
         className="col-9 justify-content-center"
         style={{ minHeight: "100vh" }}
       >
-        <h2 className="my-5">Registration</h2>
-        <h5 className="mt-5 mb-3">Register new class</h5>
+        {error && <Alert variant="danger">{error}</Alert>}
+        {message && <Alert variant="success">{message}</Alert>}
+        <Row className="col-12">
+          <h2 className="my-5">Registration</h2>
+          <h5 className="mt-5 mb-3">Register new class</h5>
+        </Row>
         <Paper
           className="col-8 px-3 py-3 m-2"
           elevation={3}
@@ -115,7 +117,9 @@ export default function Registration() {
             <Form.Group id="student-class">
               <Form.Label>Student Class</Form.Label>
               <Form.Control as="select" multiple ref={studentClassRef} required>
-                {classes.map(val => <option value={val}>{val}</option>)}
+                {classes.map((val) => (
+                  <option value={val}>{val}</option>
+                ))}
               </Form.Control>
             </Form.Group>
             <Form.Group id="student-id">
