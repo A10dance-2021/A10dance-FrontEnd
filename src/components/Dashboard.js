@@ -69,9 +69,9 @@ export default function Dashboard() {
       <Container className="col-9 justify-content-center">
         <h5 className="col-12 pt-3">{date}</h5>
         <h1 className="text-center">Welcome Back, {currentUser.displayName}</h1>
-        <Row className="col-12 mt-5 align-middle">
+        <Row className="col-12 mt-5 justify-content-center">
           <Paper
-            className="col-5 px-5 ml-5 justify-content-center"
+            className="col-5 px-5 ml-5"
             elevation={3}
             style={{ backgroundColor: "#c4e8b7" }}
           >
